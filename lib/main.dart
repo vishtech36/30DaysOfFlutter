@@ -1,16 +1,26 @@
 import 'dart:ffi';
 
-import 'package:demo/home_page.dart';
+import 'package:demo/pages/home_page.dart';
+import 'package:demo/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    const int days = 30;
-    const String name = "Vishwajeet";
-
-    return const MaterialApp(home: HomePage());
+    return MaterialApp(
+      themeMode: ThemeMode.light,
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      darkTheme: ThemeData.dark(),
+      initialRoute: "/home",
+      routes: {
+        "/": (context) => const LoginPage(),
+        "/home": (context) => const HomePage(),
+        "/login": (context) => const LoginPage()
+      },
+    );
   }
 }
